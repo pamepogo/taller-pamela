@@ -1,14 +1,13 @@
-# Imagen base oficial de Python
-FROM python:3.11-slim
+FROM python:3.12-slim
 
-# Establecer directorio de trabajo
 WORKDIR /app
 
-# Copiar dependencias y código
-COPY . /app
+COPY requirements.txt .
 
-# Instalar Flask
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Comando por defecto
+COPY . .
+
+EXPOSE 80
+
 CMD ["python", "app.py"]

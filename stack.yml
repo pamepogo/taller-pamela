@@ -1,23 +1,22 @@
 version: "3.8"
 
 services:
-  pgmoreno:
-    image: pgpogo:latest
-    build: .
+  pamela:
+    image: valeimg:1.0.1
     deploy:
       replicas: 1
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.pgpogo.entrypoints=http"
-        - "traefik.http.routers.pgpogo.rule=Host(`pgpogo.byronrm.com`)"
-        - "traefik.http.middlewares.pgpogo-https-redirect.redirectscheme.scheme=https"
-        - "traefik.http.routers.pgpogo.middlewares=pgpogo-https-redirect"
-        - "traefik.http.routers.pgpogo-secure.entrypoints=https"
-        - "traefik.http.routers.pgpogo-secure.rule=Host(`pgpogo.byronrm.com`)"
-        - "traefik.http.routers.pgpogo-secure.tls=true"
-        - "traefik.http.routers.pgpogo-secure.tls.certresolver=http"
-        - "traefik.http.routers.pgpogo-secure.service=pgpogo"
-        - "traefik.http.services.pgpogo.loadbalancer.server.port=80"
+        - "traefik.http.routers.pamela.entrypoints=http"
+        - "traefik.http.routers.pamela.rule=Host(`pamela.byronrm.com`)"
+        - "traefik.http.middlewares.pamela-https-redirect.redirectscheme.scheme=https"
+        - "traefik.http.routers.pamela.middlewares=pamela-https-redirect"
+        - "traefik.http.routers.pamela-secure.entrypoints=https"
+        - "traefik.http.routers.pamela-secure.rule=Host(`pamela.byronrm.com`)"
+        - "traefik.http.routers.pamela-secure.tls=true"
+        - "traefik.http.routers.pamela-secure.tls.certresolver=http"
+        - "traefik.http.routers.pamela-secure.service=pamela"
+        - "traefik.http.services.pamela.loadbalancer.server.port=80"
         - "traefik.docker.network=traefik-public"
     networks:
       - traefik-public

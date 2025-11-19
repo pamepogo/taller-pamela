@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   pamela:
-    image: valeimg:1.0.1
+    image: ghcr.io/pamepogo/pame:2.0.0
     deploy:
       replicas: 1
       labels:
@@ -16,7 +16,7 @@ services:
         - "traefik.http.routers.pamela-secure.tls=true"
         - "traefik.http.routers.pamela-secure.tls.certresolver=http"
         - "traefik.http.routers.pamela-secure.service=pamela"
-        - "traefik.http.services.pamela.loadbalancer.server.port=80"
+        - "traefik.http.services.pamela.loadbalancer.server.port=5050"
         - "traefik.docker.network=traefik-public"
     networks:
       - traefik-public

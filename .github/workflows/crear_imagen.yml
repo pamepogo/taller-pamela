@@ -35,3 +35,17 @@ jobs:
       with:
         push: true
         tags: ghcr.io/pamepogo/pame:2.0.0
+
+    - name: Pruebas de ssh con el servidor
+      uses: appleboy/ssh-action@v1
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        port: ${{ secrets.VPS_SSH_PORT }}
+        username: ${{ secrets.VPS_USER }}
+        password: ${{ secrets.VPS_PASSWORD }}
+        script: | 
+          echo "Conexión exitosa"
+          pwd
+          whoami
+          hostname
+          uptime
